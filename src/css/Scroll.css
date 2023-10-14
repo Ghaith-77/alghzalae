@@ -1,0 +1,7 @@
+::-webkit-scrollbar{
+  background-color: var(--background);
+  width: 10px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--lightmoodnavandfooter);
+}

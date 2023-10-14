@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Almarai", sans-serif;
+}
+
+:root {
+  --lightmoodnavandfooter: #635cbb;
+  --background: #e5c1e5;
+  --btns: #a084db;
+  --btnstext: #e5c1e5;
+  --text_color:#2e2e2e
+}
+button {
+  border: none;
+  border-radius: 20px !important;
+  background-color: var(--btns);
+  padding: 10px 20px;
+  color: var(--btnstext);
+  font-size: 17px !important;
+  font-weight: 400 !important;
+  transition: 0.2s all ease-in-out;
+}
+button:hover {
+  background-color: #9776dd;
+}
+
+.mynavbar {
+  background-color: var(--lightmoodnavandfooter) !important;
+}
+
+.footer {
+  color: #e5c1e5;
+  background-color: var(--lightmoodnavandfooter) !important;
+  text-align: center;
+  width: 100%;
+  height: max-content;
+  padding: 10px 0;
+}
+
+/* ما عرفت اعمله لما يصير اخرثق على ال tr */
+/* .person{
+  transition: .2s all ease-in-out !important;
+  cursor: pointer;
+}
+.person:hover{
+  background-color: rgb(180, 180, 180) !important;
+} */
+
+/* MyTable */
+.person {
+}
+.person span {
+  color: white !important;
+  padding: 5px 20px !important;
+  border-radius: 7px;
+  background-color: var(--lightmoodnavandfooter) !important;
+}
+.conteinerTable {
+  padding: 20px !important;
+}
+.app {
+  height: 100vh !important;
+}
+.HomePage_body,
+.login_body {
+  height: max-content !important;
+  min-height: 69% !important;
+}
+.MyTable tr,
+.MyTable th,
+.MyTable td {
+  background-color: transparent !important;
+}
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: black !important;
+}
+/* MyTable */
