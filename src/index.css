@@ -22,7 +22,8 @@ button {
   font-weight: 400 !important;
   transition: 0.2s all ease-in-out;
 }
-button:hover {
+
+.mynavbar button:hover {
   background-color: #9776dd;
 }
 
