@@ -1,12 +1,10 @@
-import { useState } from "react";
-import axios from "axios";
 import HomePage from "./pages/HomePage";
 import MyNavbar from "./component/Navbar";
 import Footer from "./component/Footer";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Addpage from "./pages/Addpage";
-import Scroll from "./css/Scroll.css"
+import PersonPage from "./pages/PersonPage";
 
 function App() {
   return (
@@ -17,6 +15,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Addpage" element={<Addpage />} />
+          <Route path="/PersonPage/:personId" element={<PersonPage />} />
+          
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -10,7 +10,7 @@
   --background: #e5c1e5;
   --btns: #a084db;
   --btnstext: #e5c1e5;
-  --text_color:#2e2e2e
+  --text_color: #2e2e2e;
 }
 button {
   border: none;
@@ -41,13 +41,13 @@ button {
 }
 
 /* ما عرفت اعمله لما يصير اخرثق على ال tr */
-/* .person{
-  transition: .2s all ease-in-out !important;
+.person {
+  transition: 0.2s all ease-in-out !important;
   cursor: pointer;
 }
-.person:hover{
-  background-color: rgb(180, 180, 180) !important;
-} */
+.person:hover {
+  background-color: rgb(229, 229, 229) !important;
+}
 
 /* MyTable */
 .person {

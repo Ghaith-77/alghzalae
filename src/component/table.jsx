@@ -1,6 +1,7 @@
 import Table from "react-bootstrap/Table";
+import { Link } from "react-router-dom";
 
-let data = [
+let headerTable = [
   [
     "الرقم التعريفي",
     "رقم الإضبارة ",
@@ -13,41 +14,15 @@ let data = [
     "تاريخ دخول المعهد  ",
     "مكرر ",
   ],
-  [
-    {
-      id: 1,
-      id_adbara: 425,
-      name: "هاني رمزي سعيد",
-      father_name: "رمزي  سعيد",
-      mother_name: "هبة  سعيد",
-      age: 15,
-      Nationality: "ع/س",
-      Region: "دمشق",
-      Date_entering_institute: "1 / 2 / 2003",
-      redundant: "مرتان",
-    },
-    {
-      id: 2,
-      id_adbara: 425,
-      name: "هاني رمزي سعيد",
-      father_name: "رمزي  سعيد",
-      mother_name: "هبة  سعيد",
-      age: 15,
-      Nationality: "ع/س",
-      Region: "دمشق",
-      Date_entering_institute: "1 / 2 / 2003",
-      redundant: "مرتان",
-    },
-  ],
 ];
 
-function MyTable() {
+function MyTable({ data }) {
   return (
     <div className="container mt-5 conteinerTable col-11">
       <Table responsive className="MyTable ">
         <thead>
           <tr className=" text-center">
-            {data[0].map((e) => (
+            {headerTable[0].map((e) => (
               <th key={e} className="">
                 {e}
               </th>
@@ -55,21 +30,28 @@ function MyTable() {
           </tr>
         </thead>
         <tbody className=" text-center">
-          {data[1].map((e) => (
-            <tr className="person">
-              <td className=" firstTD">
-                <span>{e?.id}</span>
-              </td>
-              <td>{e?.id_adbara}</td>
-              <td>{e?.name}</td>
-              <td>{e?.father_name}</td>
-              <td>{e?.mother_name}</td>
-              <td>{e?.age}</td>
-              <td>{e?.Nationality}</td>
-              <td>{e?.Region}</td>
-              <td>{e?.Date_entering_institute}</td>
-              <td>{e?.redundant}</td>
-            </tr>
+          {data.map((e, key) => (
+            <Link
+              key={key}
+              to={`/PersonPage/${e.prisoner_id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <tr className="person">
+                <td className=" firstTD">
+                  <span>{key + 1}</span>
+                </td>
+                <td>{e?.file_number}</td>
+                <td>{e?.name}</td>
+                <td>{e?.father_name}</td>
+                <td>{e?.mather_name}</td>
+                <td>{e?.age}</td>
+                <td>{e?.nationality}</td>
+                <td>{e?.region}</td>
+                <td>{e?.Date_of_entering_the_institute}</td>
+                <td>{e?.redundant}</td>
+                {/* في غلطين  */}
+              </tr>
+            </Link>
           ))}
         </tbody>
       </Table>

@@ -1,14 +1,35 @@
 import MyTable from "../component/table";
 import { useState } from "react";
 import "../css/Searchbar.css";
+import axios from "axios";
+
+import { useEffect } from "react";
 function HomePage() {
+  const [data, setdata] = useState([]);
   let [active, setactive] = useState("dsa");
+  let [dataSearch, setdataSearch] = useState();
   function handelsearchactive() {
     setactive(!active);
   }
+  // ___apirequest__________________
+  function getprisoners() {
+    axios(
+      `https://alazali.cyclic.app/api/prisoners${
+        dataSearch ? "?searchText=" + dataSearch : ""
+      }`
+    ).then((response) => {
+      console.log(response);
+      setdata(response?.data);
+    });
+  }
+  useEffect(() => {
+    getprisoners();
+  }, [dataSearch]);
+  // __________________
+
   return (
     <div className="HomePage_body">
-      <MyTable />
+      <MyTable data={data} />
       <div className="searchbar" onClick={() => handelsearchactive()}>
         <div className="input-wrapper">
           <button className="icon">
@@ -41,6 +62,9 @@ function HomePage() {
             name="text"
             type="text"
             style={{ borderRadius: "30px" }}
+            onChange={(e) => {
+              setdataSearch(e.target.value);
+            }}
           />
         </div>
       </div>
