@@ -47,7 +47,7 @@ function MyTable({ data }) {
                 <td>{e?.age}</td>
                 <td>{e?.nationality}</td>
                 <td>{e?.region}</td>
-                <td>{e?.Date_of_entering_the_institute}</td>
+                <td>{e?.Date_of_entering_the_institute} </td> 
                 <td>{e?.redundant}</td>
                 {/* في غلطين  */}
               </tr>
