@@ -7,24 +7,31 @@ import { useEffect } from "react";
 function HomePage() {
   const [data, setdata] = useState([]);
   let [active, setactive] = useState("dsa");
-  let [dataSearch, setdataSearch] = useState();
+
   function handelsearchactive() {
     setactive(!active);
   }
+
+  function getprisonersSearch(word) {
+    axios(
+      `https://alazali.cyclic.app/api/prisoners?searchText=${word}`
+    ).then((response) => {
+      console.log(response);
+      setdata(response?.data);
+    });
+  }
+
   // ___apirequest__________________
   function getprisoners() {
-    axios(
-      `https://alazali.cyclic.app/api/prisoners${
-        dataSearch ? "?searchText=" + dataSearch : ""
-      }`
-    ).then((response) => {
+    axios(`https://alazali.cyclic.app/api/prisoners`).then((response) => {
       console.log(response);
       setdata(response?.data);
     });
   }
   useEffect(() => {
     getprisoners();
-  }, [dataSearch]);
+  }, []);
+  
   // __________________
 
   return (
@@ -63,7 +70,7 @@ function HomePage() {
             type="text"
             style={{ borderRadius: "30px" }}
             onChange={(e) => {
-              setdataSearch(e.target.value);
+              getprisonersSearch(e.target.value);
             }}
           />
         </div>

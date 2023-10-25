@@ -1,5 +1,5 @@
 import Table from "react-bootstrap/Table";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 let headerTable = [
   [
@@ -17,6 +17,7 @@ let headerTable = [
 ];
 
 function MyTable({ data }) {
+  let navi = useNavigate();
   return (
     <div className="container mt-5 conteinerTable col-11">
       <Table responsive className="MyTable ">
@@ -31,27 +32,25 @@ function MyTable({ data }) {
         </thead>
         <tbody className=" text-center">
           {data.map((e, key) => (
-            <Link
+            <tr
+              className="person"
               key={key}
-              to={`/PersonPage/${e.prisoner_id}`}
-              style={{ textDecoration: "none" }}
+              onClick={() => navi(`/PersonPage/${e.prisoner_id}`)}
             >
-              <tr className="person">
-                <td className=" firstTD">
-                  <span>{key + 1}</span>
-                </td>
-                <td>{e?.file_number}</td>
-                <td>{e?.name}</td>
-                <td>{e?.father_name}</td>
-                <td>{e?.mather_name}</td>
-                <td>{e?.age}</td>
-                <td>{e?.nationality}</td>
-                <td>{e?.region}</td>
-                <td>{e?.Date_of_entering_the_institute} </td> 
-                <td>{e?.redundant}</td>
-                {/* في غلطين  */}
-              </tr>
-            </Link>
+              <td className=" firstTD">
+                <span>{key + 1}</span>
+              </td>
+              <td>{e?.file_number}</td>
+              <td>{e?.name}</td>
+              <td>{e?.father_name}</td>
+              <td>{e?.mather_name}</td>
+              <td>{e?.age}</td>
+              <td>{e?.nationality}</td>
+              <td>{e?.region}</td>
+              <td>{e?.Date_of_entering_the_institute}</td>
+              <td>{e?.redundant}</td>
+              {/* في غلطين  */}
+            </tr>
           ))}
         </tbody>
       </Table>
