@@ -2,41 +2,25 @@ import MyTable from "../component/table";
 import { useState } from "react";
 import "../css/Searchbar.css";
 import axios from "axios";
-
 import { useEffect } from "react";
-function HomePage() {
-  const [data, setdata] = useState([]);
-  let [active, setactive] = useState("dsa");
+import { useDispatch, useSelector } from "react-redux";
+import { getdataSearch } from "../redux/actions";
 
+function HomePage() {
+  let dispatch = useDispatch()
+ 
+  let [active, setactive] = useState("dsa");
   function handelsearchactive() {
     setactive(!active);
   }
 
   function getprisonersSearch(word) {
-    axios(
-      `https://alazali.cyclic.app/api/prisoners?searchText=${word}`
-    ).then((response) => {
-      console.log(response);
-      setdata(response?.data);
-    });
+    dispatch(getdataSearch(word));
   }
-
-  // ___apirequest__________________
-  function getprisoners() {
-    axios(`https://alazali.cyclic.app/api/prisoners`).then((response) => {
-      console.log(response);
-      setdata(response?.data);
-    });
-  }
-  useEffect(() => {
-    getprisoners();
-  }, []);
-  
-  // __________________
-
+ 
   return (
     <div className="HomePage_body">
-      <MyTable data={data} />
+      <MyTable  />
       <div className="searchbar" onClick={() => handelsearchactive()}>
         <div className="input-wrapper">
           <button className="icon">
